@@ -1,3 +1,6 @@
+/* ! Most border-radii in this code uses the corner-shape property,
+which is only compatible for Chromium browsers ! */
+
 /* Defaults */
 
 * {
@@ -154,20 +157,6 @@ h6 {
   pointer-events: none; /* So you can still click through it */
 }
 
-.navblur-bottom::before {
-  z-index: 999;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  content: "";
-  position: absolute;
-  height: 20%;
-  backdrop-filter: blur(30px);
-  /* This mask creates the gradient fade effect on the blur */
-  mask-image: linear-gradient(rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%);
-  pointer-events: none; /* So you can still click through it */
-}
-
 .nav-top ul {
   /* width: 100%; */
   display: grid;
@@ -205,7 +194,7 @@ h6 {
 .nav-top .icon:hover .back-to-top {
   opacity: 1;
   font-size: 12px;
-  left: 60px;
+  left: 70px;
   transition: all 0.2s cubic-bezier(0.15, 0.82, 0.165, 1);
 }
 
@@ -292,7 +281,7 @@ h6 {
   bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1000;
+  z-index: 1001;
 }
 
 .nav-bottom ul {
@@ -317,6 +306,18 @@ h6 {
   text-decoration: none;
   padding: 7px 10px;
   transition: all 0.3s;
+}
+
+.navblur-bottom::before {
+  z-index: 999;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "";
+  position: absolute;
+  height: 50%;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.788));
+  pointer-events: none;
 }
 
 .nav-bottom li a:hover {
@@ -387,9 +388,11 @@ h6 {
 /* Section & Container CSS */
 
 section {
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.269);
 }
 
 .container {
@@ -419,7 +422,7 @@ section {
   width: 100%;
   height: 100vh;
   mix-blend-mode: multiply;
-  background: url("noise.gif");
+  background: url("./assets/noise.gif");
 }
 
 .hero-content {
@@ -487,11 +490,86 @@ section {
   right: 0;
 }
 
+/* Work */
+
+#Work {
+  background-color: #34275827;
+}
+
+.work-content {
+  display: flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+}
+
+.work-content .work-title {
+  margin-bottom: 50px;
+}
+
+.work-content .work-title h2 {
+  font-size: 5rem;
+  text-align: center;
+}
+
+.work-content .work-title h2 em {
+  color: #594493;
+}
+
+.work-bio {
+  font-size: 1.9rem;
+  text-align: justify;
+}
+
+.work-bio .collage-imgs-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 100%;
+  height: auto;
+  gap: 0;
+}
+
+.work-bio .collage-imgs-2 img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: bottom;
+  display: block;
+}
+
+.work-bio .card {
+  background-color: rgb(13, 13, 13);
+  display: grid;
+  margin: 40px 0;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 80px;
+  corner-shape: squircle;
+  overflow: hidden;
+}
+
+.work-bio .card p {
+  margin: 30px;
+}
+
+.work-bio .card-1 {
+  text-align: left;
+  grid-template-columns: 300px 1fr;
+}
+
+.work-bio .card-2 {
+  text-align: left;
+  grid-template-columns: 1fr 300px;
+}
+
 /* About */
+
+#About {
+  background-color: #2b3f631e;
+}
 
 .about-content {
   display: flex;
-  /* justify-content: space-between; */
   flex-direction: column;
 }
 
@@ -507,7 +585,7 @@ section {
 
 .about-content .about-title h2 {
   font-size: 7rem;
-  color: var(--light-teal);
+  color: var(--blue);
   text-wrap: nowrap;
 }
 
@@ -515,7 +593,7 @@ section {
   width: 100px;
   height: 100%;
   object-fit: cover;
-  border-left: var(--light-teal) 4px solid;
+  border-left: var(--blue) 4px solid;
 }
 
 .about-img {
@@ -524,7 +602,7 @@ section {
 }
 
 .bar {
-  background: var(--light-teal);
+  background: var(--blue);
   justify-self: start;
 }
 
@@ -555,6 +633,10 @@ section {
 }
 
 .about-content .about-bio .about-misc-pics {
+  background-color: rgba(0, 0, 0, 0.283);
+  border-radius: 50px;
+  corner-shape: squircle;
+  padding: 20px;
   margin-top: 70px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -566,7 +648,8 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 30px;
+  corner-shape: squircle;
 }
 
 .about-misc-pics img:nth-child(1) {
@@ -608,4 +691,167 @@ section {
   grid-row: span 7 / 8;
   grid-column-start: 7;
   grid-row-start: 6;
+}
+
+/* Resume */
+
+#Resume {
+  background-color: #1a596e1a;
+  text-align: center;
+}
+
+.resume-title a {
+  text-decoration: none;
+  color: #35859f;
+  position: relative;
+}
+
+.resume-title .resume-link {
+  padding: 10px;
+  margin: 20px;
+  width: 300px;
+  border: 2px #35859f solid;
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(0.175, 0.82, 0.165, 1);
+  border-radius: 500px;
+}
+
+.resume-title a:hover .resume-link {
+  width: 340px;
+  background-color: #35859f;
+  color: white;
+}
+
+.resume-title .resume-link h2::after {
+  content: " →";
+  position: absolute;
+  right: 10px;
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.175, 0.82, 0.165, 1);
+}
+
+.resume-title a:hover .resume-link h2::after {
+  opacity: 1;
+  right: 0;
+}
+
+.resume-title .resume-link h2 {
+  transition: all 0.5s cubic-bezier(0.175, 0.82, 0.165, 1);
+}
+
+.resume-title a:hover .resume-link h2 {
+  transform: translateX(-20px);
+}
+
+/* Contact */
+
+.contact-me {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#Contact {
+  background-color: #258f8d15;
+  height: 100%;
+}
+
+#Contact .container {
+  margin: 10px auto;
+}
+
+.contact-content {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form-wrapper {
+  border: 2px solid white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 60%;
+}
+
+.contact-form-wrapper legend h2 {
+  margin: 10px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  font-family: inherit;
+  resize: none;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.contact-form button {
+  padding: 6px;
+  margin: 0 auto;
+  width: 100px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: "Space Mono", monospace;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.contact-form button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 120px;
+}
+
+/* Footer */
+
+#Footer {
+  z-index: 1000;
+  position: relative;
+}
+
+footer {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  width: 100%;
+  font-size: 15px;
+  z-index: 1000;
+  position: relative;
+}
+
+footer .socials {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+footer .socials a {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  transition: all 0.2s linear;
+}
+
+footer .socials a:hover {
+  color: rgba(255, 255, 255, 0.42);
 }

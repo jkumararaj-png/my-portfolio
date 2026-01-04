@@ -63,8 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const scroll = new LocomotiveScroll({
     el: document.querySelector("[data-scroll-container]"),
     smooth: true,
-    // Half of default speed
-    multiplier: 0.5,
+    // Scrolling speed
+    multiplier: 0.7,
 
     // Use normal scrolling on mobile devices for accessibility
     smartphone: {
