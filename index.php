@@ -32,7 +32,14 @@ header("Pragma: no-cache");
 </head>
 
 <body>
-  <!-- Included the navbar & footer from seperate HTML files for code optimization -->
+
+  <!-- Loading screen -->
+
+  <div class="loading-screen">
+    <div class="loader-icon"><img src="./assets/Portfolio-logo.svg" alt="Icon" /></div>
+  </div>
+
+  <!-- Navbar & footer from seperate HTML files for code optimization -->
 
   <?php include "nav.html"; ?>
 
@@ -175,8 +182,8 @@ header("Pragma: no-cache");
 
     <!-- Contact -->
 
-    <div class="contact-me">
-      <section id="Contact" data-scroll-section>
+    <div class="contact-footer" data-scroll-section>
+      <section id="Contact">
         <div class="container">
           <div class="contact-content">
             <fieldset class="contact-form-wrapper">
@@ -192,12 +199,11 @@ header("Pragma: no-cache");
             </fieldset>
           </div>
         </div>
-      </section>
 
-      <!-- Footer -->
-      <section id="Footer" data-scroll-section>
-        <?php include "footer.html"; ?>
+
       </section>
+      <?php include "footer.html"; ?>
+
     </div>
 
   </div>

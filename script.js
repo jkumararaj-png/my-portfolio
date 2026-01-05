@@ -1,5 +1,20 @@
+// Loading Screen
+window.addEventListener("load", () => {
+  const loadingScreen = document.querySelector(".loading-screen");
+
+  // Wait a bit, then slide up
+  setTimeout(() => {
+    loadingScreen.classList.add("hide");
+
+    // Remove from DOM after animation completes
+    setTimeout(() => {
+      loadingScreen.remove();
+    }, 1000);
+  }, 1500);
+});
+
 document.addEventListener("DOMContentLoaded", () => {
-  // ACTIVE TAB UNDERLINE
+  // Active Tab Underline
 
   // Get the elements
   const bottomLinks = document.querySelectorAll(".nav-bottom li a");
