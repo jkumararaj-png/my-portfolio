@@ -1,6 +1,25 @@
 /* ! Most border-radii in this code uses the corner-shape property,
 which is only compatible for Chromium browsers ! */
 
+/* CSS Variables */
+
+:root {
+  --light-teal: #258f8d;
+  --teal: #0b7078;
+  --blue-teal: #1a596e;
+  --blue: #2b4063;
+  --purple: #342758;
+  --light-purple: #512663;
+
+  /* 50% Opacity */
+  --light-teal-50o: #00807e80;
+  --teal-50o: #0b717880;
+  --blue-teal-50o: #1a596e80;
+  --blue-50o: #2b406380;
+  --purple-50o: #34275880;
+  --light-purple-50o: #51266380;
+}
+
 /* Defaults */
 
 * {
@@ -18,21 +37,16 @@ body {
   font-family: "Space Mono", monospace;
 }
 
-:root {
-  --light-teal: #258f8d;
-  --teal: #0b7078;
-  --blue-teal: #1a596e;
-  --blue: #2b4063;
-  --purple: #342758;
-  --light-purple: #512663;
+/* Enable scrolling on mobile/tablet (restricted due to Locomotive Scroll) */
 
-  /* 50% Opacity */
-  --light-teal-50o: #00807e80;
-  --teal-50o: #0b717880;
-  --blue-teal-50o: #1a596e80;
-  --blue-50o: #2b406380;
-  --purple-50o: #34275880;
-  --light-purple-50o: #51266380;
+@media (max-width: 1024px) {
+  body {
+    overflow: auto;
+  }
+
+  [data-scroll-container] {
+    overflow: visible;
+  }
 }
 
 h1,
@@ -151,7 +165,7 @@ h6 {
 /* Navbar */
 
 .nav-top {
-  z-index: 1000;
+  z-index: 1002;
   width: 100%;
   position: fixed;
   top: 0;
@@ -281,6 +295,11 @@ h6 {
   position: relative;
 }
 
+.nav-top .menu-toggle {
+  display: inline-block;
+  cursor: pointer;
+}
+
 .nav-top .menu-icon span {
   display: block;
   width: 100%;
@@ -301,6 +320,56 @@ h6 {
   height: 1px;
 }
 
+/* Dropdown */
+
+.menu-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.123);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 10px 0;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1001;
+}
+
+.menu-dropdown.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.menu-dropdown a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: white;
+  text-decoration: none;
+  font-family: "Instrument Serif", serif;
+  font-size: 25px;
+  transition: all 0.2s ease;
+}
+
+.menu-dropdown a i {
+  text-align: center;
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.menu-dropdown a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding-left: 25px;
+}
+
 .nav-top li {
   list-style: none;
   margin: 0;
@@ -319,7 +388,7 @@ h6 {
   bottom: 25px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 1001;
+  z-index: 1002;
 }
 
 .nav-bottom ul {
@@ -787,7 +856,7 @@ section {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  z-index: 2000;
+  z-index: 1001;
   position: relative;
 }
 

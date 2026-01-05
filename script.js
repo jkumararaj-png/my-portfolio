@@ -14,6 +14,30 @@ window.addEventListener("load", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Menu Toggle
+  const menuToggle = document.querySelector(".menu-toggle");
+  const menuDropdown = document.querySelector(".menu-dropdown");
+
+  menuToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    menuDropdown.classList.toggle("show");
+  });
+
+  // Close menu when clicking a link
+  const menuLinks = document.querySelectorAll(".menu-dropdown a");
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      menuDropdown.classList.remove("show");
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!menuToggle.contains(e.target) && !menuDropdown.contains(e.target)) {
+      menuDropdown.classList.remove("show");
+    }
+  });
+
   // Active Tab Underline
 
   // Get the elements
@@ -24,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Move the underline
   function moveUnderline(link) {
     const underlineWidth = 25;
+
     // Get the size of the tab button
     const linkRect = link.getBoundingClientRect();
     const parentRect = link.parentElement.parentElement.getBoundingClientRect();
